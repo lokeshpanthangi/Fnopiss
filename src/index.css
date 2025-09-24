@@ -2,40 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* FNOL Multi-Agent System Design System
+Pure black/white minimalist design with status colors
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
+    /* Core Colors - Pure Black & White */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 0 0% 0%;
+    
+    /* Cards & Surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
+    --card-foreground: 0 0% 0%;
+    
+    /* Status Colors */
+    --status-high: 0 100% 50%;     /* Red for HIGH risk */
+    --status-medium: 51 100% 50%;  /* Yellow for MEDIUM risk */
+    --status-low: 120 100% 50%;    /* Green for LOW risk */
+    --status-info: 216 100% 50%;   /* Blue for info/actions */
+    
+    /* Neutral Tones */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+    --border: 0 0% 90%;
+    --input: 0 0% 100%;
+    --ring: 0 0% 0%;
+    
+    /* Component States */
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+    --accent: 0 0% 95%;
+    --accent-foreground: 0 0% 0%;
+    
+    /* Animations */
+    --pulse-duration: 1.5s;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
@@ -101,5 +107,91 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  /* Pipeline Animation */
+  .pipeline-pulse {
+    animation: pipeline-pulse var(--pulse-duration) ease-in-out infinite;
+  }
+  
+  .claim-move {
+    animation: claim-slide 2s ease-in-out;
+  }
+  
+  /* Status Indicators */
+  .status-high {
+    @apply bg-[hsl(var(--status-high))] text-white;
+  }
+  
+  .status-medium {
+    @apply bg-[hsl(var(--status-medium))] text-black;
+  }
+  
+  .status-low {
+    @apply bg-[hsl(var(--status-low))] text-white;
+  }
+  
+  .status-info {
+    @apply bg-[hsl(var(--status-info))] text-white;
+  }
+  
+  /* Agent Status Dots */
+  .agent-idle {
+    @apply bg-[hsl(var(--status-low))] animate-pulse;
+  }
+  
+  .agent-processing {
+    @apply bg-[hsl(var(--status-medium))] animate-pulse;
+  }
+  
+  .agent-error {
+    @apply bg-[hsl(var(--status-high))] animate-pulse;
+  }
+  
+  /* Count-up Animation */
+  .count-up {
+    animation: count-up 0.5s ease-out;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+}
+
+@keyframes pipeline-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 hsl(var(--status-info) / 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 8px hsl(var(--status-info) / 0);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes claim-slide {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes count-up {
+  from {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }

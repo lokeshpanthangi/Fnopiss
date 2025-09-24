@@ -44,9 +44,59 @@ const SubmitClaimModal: React.FC<SubmitClaimModalProps> = ({
     has_injuries: false,
   });
   const [date, setDate] = useState<Date>();
+  const [useDump, setUseDump] = useState(false);
+  const [dumpData, setDumpData] = useState('');
+
+  const handleDumpParse = () => {
+    if (!dumpData.trim()) return;
+    
+    try {
+      // Try to parse as JSON first
+      const parsed = JSON.parse(dumpData);
+      setFormData({
+        type: parsed.type || '',
+        amount: parsed.amount?.toString() || '',
+        description: parsed.description || '',
+        customer_id: parsed.customer_id || '',
+        policy_number: parsed.policy_number || '',
+        location: parsed.location || '',
+        police_report: parsed.police_report || '',
+        has_injuries: parsed.has_injuries || false,
+      });
+      if (parsed.date) setDate(new Date(parsed.date));
+    } catch {
+      // If not JSON, try to extract key-value pairs from text
+      const lines = dumpData.split('\n');
+      const extracted: any = {};
+      
+      lines.forEach(line => {
+        const colonIndex = line.indexOf(':');
+        if (colonIndex > 0) {
+          const key = line.substring(0, colonIndex).trim().toLowerCase().replace(/\s+/g, '_');
+          const value = line.substring(colonIndex + 1).trim();
+          
+          if (key.includes('type')) extracted.type = value;
+          else if (key.includes('amount')) extracted.amount = value.replace(/[^0-9.]/g, '');
+          else if (key.includes('description')) extracted.description = value;
+          else if (key.includes('customer')) extracted.customer_id = value;
+          else if (key.includes('policy')) extracted.policy_number = value;
+          else if (key.includes('location')) extracted.location = value;
+          else if (key.includes('police')) extracted.police_report = value;
+          else if (key.includes('injur')) extracted.has_injuries = value.toLowerCase().includes('yes') || value.toLowerCase().includes('true');
+        }
+      });
+      
+      setFormData(prev => ({ ...prev, ...extracted }));
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (useDump && dumpData.trim()) {
+      handleDumpParse();
+      return;
+    }
     
     if (!formData.type || !formData.amount || !formData.customer_id || !formData.policy_number) {
       return;
@@ -97,6 +147,8 @@ const SubmitClaimModal: React.FC<SubmitClaimModalProps> = ({
       has_injuries: false,
     });
     setDate(undefined);
+    setUseDump(false);
+    setDumpData('');
   };
 
   return (
@@ -110,6 +162,39 @@ const SubmitClaimModal: React.FC<SubmitClaimModalProps> = ({
         </DialogHeader>
         
         <form onSubmit={handleSubmit} className="space-y-6 py-4">
+          <div className="flex items-center space-x-2 p-4 bg-muted rounded-lg">
+            <Checkbox
+              id="use-dump"
+              checked={useDump}
+              onCheckedChange={(checked) => setUseDump(checked as boolean)}
+            />
+            <Label htmlFor="use-dump" className="text-sm font-medium">
+              Quick Dump Mode - Paste all claim data as text or JSON
+            </Label>
+          </div>
+          
+          {useDump ? (
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="dump-data">Claim Data Dump</Label>
+                <Textarea
+                  id="dump-data"
+                  placeholder="Paste claim data here... 
+Examples:
+- JSON: {&quot;type&quot;: &quot;auto_collision&quot;, &quot;amount&quot;: 5000, &quot;customer_id&quot;: &quot;CUST-123&quot;}
+- Text: Type: Auto Collision, Amount: $5000, Customer ID: CUST-123, Policy: POL-456"
+                  value={dumpData}
+                  onChange={(e) => setDumpData(e.target.value)}
+                  rows={8}
+                  className="font-mono text-sm"
+                />
+              </div>
+              <Button type="button" onClick={handleDumpParse} className="w-full">
+                Parse & Fill Form
+              </Button>
+            </div>
+          ) : (
+            <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="type">Claim Type *</Label>
@@ -249,6 +334,8 @@ const SubmitClaimModal: React.FC<SubmitClaimModalProps> = ({
               </Label>
             </div>
           </div>
+          </>
+          )}
           
           <div className="flex justify-end space-x-3 pt-4">
             <Button

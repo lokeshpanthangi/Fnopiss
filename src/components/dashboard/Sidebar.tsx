@@ -7,35 +7,42 @@ import {
   Activity,
   AlertTriangle
 } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const navigationItems = [
-  { icon: BarChart3, label: 'Dashboard', active: true },
-  { icon: FileText, label: 'Claims', active: false },
-  { icon: Users, label: 'Agents', active: false },
-  { icon: Activity, label: 'Analytics', active: false },
-  { icon: AlertTriangle, label: 'Alerts', active: false },
-  { icon: Settings, label: 'Settings', active: false },
+  { icon: BarChart3, label: 'Dashboard', path: '/' },
+  { icon: FileText, label: 'Claims', path: '/claims' },
+  { icon: Users, label: 'Agents', path: '/agents' },
+  { icon: Activity, label: 'Analytics', path: '/analytics' },
+  { icon: AlertTriangle, label: 'Alerts', path: '/alerts' },
+  { icon: Settings, label: 'Settings', path: '/settings' },
 ];
 
 const Sidebar: React.FC = () => {
+  const location = useLocation();
+  
   return (
     <aside className="w-64 bg-white border-r border-border h-[calc(100vh-4rem)] sticky top-16">
       <nav className="p-4 space-y-2">
-        {navigationItems.map((item, index) => (
-          <button
-            key={index}
-            className={cn(
-              'w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-smooth',
-              item.active 
-                ? 'bg-accent text-accent-foreground font-medium' 
-                : 'text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground'
-            )}
-          >
-            <item.icon className="h-5 w-5" />
-            <span>{item.label}</span>
-          </button>
-        ))}
+        {navigationItems.map((item, index) => {
+          const isActive = location.pathname === item.path;
+          return (
+            <Link
+              key={index}
+              to={item.path}
+              className={cn(
+                'w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-smooth',
+                isActive 
+                  ? 'bg-accent text-accent-foreground font-medium' 
+                  : 'text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground'
+              )}
+            >
+              <item.icon className="h-5 w-5" />
+              <span>{item.label}</span>
+            </Link>
+          );
+        })}
       </nav>
       
       <div className="absolute bottom-4 left-4 right-4">

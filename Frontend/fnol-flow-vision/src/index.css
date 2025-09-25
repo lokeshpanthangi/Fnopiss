@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FNOL Multi-Agent System Design System - Dark Theme Only */
+
+@layer base {
+  :root {
+    /* Base dark theme colors */
+    --background: 220 13% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 13% 11%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 13% 11%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 220 13% 8%;
+
+    --secondary: 220 13% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 13% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 220 13% 15%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 18%;
+    --input: 220 13% 18%;
+    --ring: 0 0% 98%;
+
+    --radius: 0.5rem;
+
+    /* Status colors for risk levels */
+    --status-high: 0 100% 50%;      /* Red for HIGH risk */
+    --status-medium: 45 100% 50%;   /* Yellow for MEDIUM risk */
+    --status-low: 120 100% 50%;     /* Green for LOW risk */
+    --status-action: 214 100% 50%;  /* Blue for actions/links */
+
+    /* System UI colors */
+    --surface-primary: 220 13% 8%;
+    --surface-secondary: 220 13% 11%;
+    --surface-tertiary: 220 13% 15%;
+    --surface-hover: 220 13% 18%;
+
+    /* Text hierarchy */
+    --text-primary: 0 0% 98%;
+    --text-secondary: 0 0% 85%;
+    --text-tertiary: 0 0% 65%;
+
+    /* Pipeline colors */
+    --pipeline-active: 214 100% 60%;
+    --pipeline-complete: 120 100% 40%;
+    --pipeline-waiting: 220 13% 40%;
+    --pipeline-error: 0 100% 50%;
+
+    /* Gradients and effects */
+    --gradient-success: linear-gradient(135deg, hsl(120 100% 40%), hsl(140 100% 35%));
+    --gradient-warning: linear-gradient(135deg, hsl(45 100% 50%), hsl(35 100% 45%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 100% 50%), hsl(15 100% 45%));
+    --gradient-primary: linear-gradient(135deg, hsl(214 100% 50%), hsl(224 100% 45%));
+
+    /* Shadows */
+    --shadow-card: 0 4px 6px -1px hsl(220 13% 4% / 0.3);
+    --shadow-elevated: 0 10px 25px -3px hsl(220 13% 4% / 0.4);
+    --shadow-glow: 0 0 20px hsl(214 100% 50% / 0.3);
+
+    /* Animations */
+    --transition-fast: all 0.15s ease-out;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* Custom component styles for FNOL system */
+  .fnol-card {
+    @apply bg-surface-secondary border border-border rounded-lg shadow-card;
+  }
+
+  .fnol-button-primary {
+    @apply bg-status-action hover:bg-status-action/90 text-white transition-smooth;
+  }
+
+  .fnol-button-secondary {
+    @apply bg-surface-tertiary border border-border text-text-primary hover:bg-surface-hover transition-smooth;
+  }
+
+  .fnol-status-badge {
+    @apply px-3 py-1 rounded-full text-sm font-medium border;
+  }
+
+  .fnol-status-high {
+    @apply bg-status-high/20 text-status-high border-status-high;
+  }
+
+  .fnol-status-medium {
+    @apply bg-status-medium/20 text-status-medium border-status-medium;
+  }
+
+  .fnol-status-low {
+    @apply bg-status-low/20 text-status-low border-status-low;
+  }
+
+  .fnol-metric-card {
+    @apply bg-surface-tertiary/50 rounded-lg p-4 border border-border transition-smooth hover:bg-surface-hover;
+  }
+
+  .fnol-agent-card {
+    @apply bg-surface-tertiary/50 rounded-lg border border-border hover:bg-surface-hover transition-smooth;
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-in-up {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.2s ease-out;
+  }
+
+  .animate-slide-claim {
+    animation: slide-claim 3s ease-in-out;
+  }
+
+  /* Text utilities */
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effects */
+  .shadow-glow-action {
+    box-shadow: 0 0 20px hsl(var(--status-action) / 0.3);
+  }
+
+  .shadow-glow-success {
+    box-shadow: 0 0 20px hsl(var(--status-low) / 0.3);
+  }
+
+  .shadow-glow-warning {
+    box-shadow: 0 0 20px hsl(var(--status-medium) / 0.3);
+  }
+
+  .shadow-glow-danger {
+    box-shadow: 0 0 20px hsl(var(--status-high) / 0.3);
+  }
+}

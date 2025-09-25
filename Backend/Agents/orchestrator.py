@@ -15,7 +15,8 @@ d = {}
 # -------------------------------
 # Logging Setup
 # -------------------------------
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s",filename="agent.logs",filemode="a", encoding="utf-8")
 
 
 # -------------------------------

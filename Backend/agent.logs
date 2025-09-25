@@ -1,0 +1,203 @@
+2025-09-25 17:36:51,833 - INFO - === Starting Orchestration ===
+2025-09-25 17:36:51,840 - INFO - Running Intake Agent...
+2025-09-25 17:36:55,589 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 17:36:59,815 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 17:37:03,775 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 17:37:08,279 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 17:37:13,397 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 17:37:13,607 - INFO - Running Risk Assessment Agent...
+2025-09-25 17:37:18,418 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 17:37:20,360 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 17:37:20,394 - INFO - Running Routing Agent...
+2025-09-25 17:37:20,698 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-09-25 17:37:20,703 - INFO - === Orchestration Completed ===
+2025-09-25 17:38:19,446 - INFO - === Starting Orchestration ===
+2025-09-25 17:38:19,453 - INFO - Running Intake Agent...
+2025-09-25 17:38:20,070 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-09-25 17:38:20,074 - INFO - Running Risk Assessment Agent...
+2025-09-25 17:38:20,076 - INFO - Running Routing Agent...
+2025-09-25 17:38:20,077 - INFO - === Orchestration Completed ===
+2025-09-25 17:39:21,821 - INFO - === Starting Orchestration ===
+2025-09-25 17:39:21,822 - INFO - Running Intake Agent...
+2025-09-25 17:39:22,234 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-09-25 17:39:22,236 - INFO - Running Risk Assessment Agent...
+2025-09-25 17:39:22,236 - INFO - Running Routing Agent...
+2025-09-25 17:39:22,237 - INFO - === Orchestration Completed ===
+2025-09-25 17:54:55,116 - INFO - === Starting Orchestration ===
+2025-09-25 17:54:55,119 - INFO - Running Intake Agent...
+2025-09-25 17:54:58,685 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 17:54:59,058 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-09-25 17:54:59,403 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-09-25 17:54:59,408 - INFO - Running Risk Assessment Agent...
+2025-09-25 17:54:59,409 - INFO - Running Routing Agent...
+2025-09-25 17:54:59,410 - INFO - === Orchestration Completed ===
+2025-09-25 17:56:01,768 - INFO - === Starting Orchestration ===
+2025-09-25 17:56:01,769 - INFO - Running Intake Agent...
+2025-09-25 17:56:02,182 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-09-25 17:56:02,187 - INFO - Running Risk Assessment Agent...
+2025-09-25 17:56:02,188 - INFO - Running Routing Agent...
+2025-09-25 17:56:02,189 - INFO - === Orchestration Completed ===
+2025-09-25 17:58:42,387 - INFO - === Starting Orchestration ===
+2025-09-25 17:58:42,390 - INFO - Running Intake Agent...
+2025-09-25 17:58:46,660 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 17:58:52,001 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 17:58:52,008 - INFO - Running Risk Assessment Agent...
+2025-09-25 17:58:57,778 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 17:59:00,679 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 17:59:00,687 - INFO - Running Routing Agent...
+2025-09-25 17:59:02,177 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 17:59:03,691 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 17:59:05,316 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 17:59:05,322 - INFO - === Orchestration Completed ===
+2025-09-25 17:59:16,663 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:03:53,533 - INFO - === Starting Orchestration ===
+2025-09-25 18:03:53,534 - INFO - Running Intake Agent...
+2025-09-25 18:03:57,607 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:04:04,182 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:04:08,551 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:04:13,148 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:04:13,155 - INFO - Running Risk Assessment Agent...
+2025-09-25 18:04:18,021 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:04:20,562 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:04:20,570 - INFO - Running Routing Agent...
+2025-09-25 18:04:22,458 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:04:24,192 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:04:26,633 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:04:26,639 - INFO - === Orchestration Completed ===
+2025-09-25 18:04:39,702 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:05:14,892 - INFO - === Starting Orchestration ===
+2025-09-25 18:05:14,894 - INFO - Running Intake Agent...
+2025-09-25 18:05:17,488 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:05:22,070 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:05:26,729 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:05:31,120 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:05:31,128 - INFO - Running Risk Assessment Agent...
+2025-09-25 18:05:35,737 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:05:37,597 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:05:37,604 - INFO - Running Routing Agent...
+2025-09-25 18:05:39,392 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:05:41,403 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:05:41,412 - INFO - === Orchestration Completed ===
+2025-09-25 18:05:51,252 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:07:33,680 - INFO - === Starting Orchestration ===
+2025-09-25 18:07:33,682 - INFO - Running Intake Agent...
+2025-09-25 18:07:36,679 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:07:41,872 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:07:45,535 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:07:50,011 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:07:50,019 - INFO - Running Risk Assessment Agent...
+2025-09-25 18:07:54,152 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:07:56,428 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:07:56,437 - INFO - Running Routing Agent...
+2025-09-25 18:07:57,887 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:07:59,691 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:08:01,483 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:08:01,497 - INFO - === Orchestration Completed ===
+2025-09-25 18:08:12,874 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:13:20,594 - INFO - === Starting Orchestration ===
+2025-09-25 18:13:20,597 - INFO - Running Intake Agent...
+2025-09-25 18:13:23,773 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:13:28,276 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:13:34,169 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:13:39,294 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:13:39,300 - INFO - Running Risk Assessment Agent...
+2025-09-25 18:13:43,402 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:13:45,165 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:13:45,171 - INFO - Running Routing Agent...
+2025-09-25 18:13:47,768 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:13:51,074 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:13:53,384 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:13:53,388 - INFO - === Orchestration Completed ===
+2025-09-25 18:14:05,628 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:17:53,491 - INFO - === Starting Orchestration ===
+2025-09-25 18:17:53,492 - INFO - Running Intake Agent...
+2025-09-25 18:17:56,840 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:18:01,238 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:18:05,445 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:18:10,240 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:18:10,248 - INFO - Running Risk Assessment Agent...
+2025-09-25 18:18:19,674 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:18:22,060 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:18:22,069 - INFO - Running Routing Agent...
+2025-09-25 18:18:25,231 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:18:27,875 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:18:27,885 - INFO - === Orchestration Completed ===
+2025-09-25 18:18:40,154 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:27:34,292 - INFO - === Starting Orchestration ===
+2025-09-25 18:27:34,293 - INFO - Running Intake Agent...
+2025-09-25 18:27:36,845 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:27:43,848 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:27:47,718 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:27:53,457 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:27:53,464 - INFO - Running Risk Assessment Agent...
+2025-09-25 18:27:58,320 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:28:01,349 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:28:01,360 - INFO - Running Routing Agent...
+2025-09-25 18:28:03,740 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:28:06,682 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:28:06,693 - INFO - === Orchestration Completed ===
+2025-09-25 18:28:18,898 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:41:31,095 - INFO - === Starting Orchestration ===
+2025-09-25 18:41:31,097 - INFO - Running Intake Agent...
+2025-09-25 18:41:35,079 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:41:40,898 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:41:44,405 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:41:50,127 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:41:50,129 - INFO - Running Risk Assessment Agent...
+2025-09-25 18:41:56,210 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:41:58,877 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:41:58,891 - INFO - Running Routing Agent...
+2025-09-25 18:42:01,967 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:42:04,604 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:42:04,613 - INFO - === Orchestration Completed ===
+2025-09-25 18:45:33,972 - INFO - === Starting Orchestration ===
+2025-09-25 18:45:33,975 - INFO - Running Intake Agent...
+2025-09-25 18:45:37,307 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:45:42,117 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:45:46,310 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:45:52,885 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:45:52,893 - INFO - Running Risk Assessment Agent...
+2025-09-25 18:45:58,590 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:46:00,712 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:46:00,723 - INFO - Running Routing Agent...
+2025-09-25 18:46:02,463 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:46:04,578 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:46:06,231 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:46:06,236 - INFO - === Orchestration Completed ===
+2025-09-25 18:46:20,754 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-25 18:46:20,766 - INFO - Extracted JSON: {
+  "claim": {
+    "claim_id": "CUST-456-2024-01-10-001",
+    "type": "property damage",
+    "date": "2024-01-10",
+    "amount": 8500.0,
+    "description": "Water damage from burst pipe in basement",
+    "customer_id": "CUST-456",
+    "policy_number": "POL-234-ACTIVE",
+    "incident_location": "N/A",
+    "police_report": null,
+    "injuries_reported": false,
+    "other_party_involved": false,
+    "timestamp_submitted": "2025-09-25T13:15:33.966Z",
+    "customer_tenure_days": 0,
+    "previous_claims_count": 0
+  },
+  "risk_report": {
+    "claim_id": "CUST-456-2024-01-10-001",
+    "risk_score": 3,
+    "category": "Low",
+    "reasons": ["New customer (< 30 days tenure)"]
+  },
+  "routing_decision": {
+    "claim_id": "unknown",
+    "processing_path": "Standard Processing",
+    "priority": "Medium",
+    "adjuster_tier": "Tier 2",
+    "rationale": "Low risk but less common type, standard routing."
+  },
+  "logs": [
+    "Intake Agent completed successfully",
+    "Risk Agent completed successfully",
+    "Routing Agent completed successfully"
+  ]
+}

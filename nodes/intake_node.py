@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Optional
+from state import State
 from config import model, PromptTemplate, json_parser
 
 class Claim(BaseModel):
@@ -23,7 +24,7 @@ claim_model = model.with_structured_output(Claim)
 
 
 claim_prompt = """You are an AI assistant that helps to extract structured insurance claim information from unstructured text.
-Given the following claim description, extract the relevant fields and return them in a structured format.
+Given the following claim description, extract the relevant fields and return them in a structured format this is the claim_description : {claim_description}.
 Repond only in the Following JSON format:
 {{
   "claim_id": str,
@@ -48,6 +49,7 @@ prompt = PromptTemplate(template=claim_prompt,input_variables=["claim_descriptio
 chain = prompt | claim_model
 
 
-def extract_claim_info(claim_description: str):
-    response = chain.invoke({"claim_description": claim_description})
-    return response
+def extract_claim_info(state : State):
+    response = chain.invoke({"claim_description": state["claim_description"]})
+    state.update(response)
+    return state

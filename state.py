@@ -9,6 +9,15 @@ class RiskAssessment(TypedDict):
     reasons: List[str]
 
 
+class RoutingDecision(TypedDict):
+    """Structured output for the claim routing analysis."""
+    claim_id: str
+    processing_path: str
+    priority: str
+    adjuster_tier: str
+    rationale: str
+
+
 
 class State(TypedDict):
     """State object representing an insurance claim and its risk assessment."""
@@ -29,3 +38,5 @@ class State(TypedDict):
     previous_claims_count: int  
     
     risk_assessment_report: Optional[RiskAssessment]
+
+    routing_decision_report: Optional[RoutingDecision]

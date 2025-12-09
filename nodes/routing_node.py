@@ -1,5 +1,67 @@
+import json
 from state import State, RoutingDecision
-from typing import List
+from typing import List, cast
+from pydantic import BaseModel
+from config import model, PromptTemplate
+
+
+class AIroute(BaseModel):
+    processing_path: str
+    priority: str
+    adjuster_tier: str
+    rationale: List[str]
+
+
+routing_model = model.with_structured_output(AIroute)
+
+
+route_prompt = """You are a Senior Insurance Claim Routing Orchestrator. Your objective is to analyze incoming claims and route them to the most appropriate processing channel based on risk, complexity, and financial exposure.
+
+### INPUT DATA
+**Claim Description:** "{claim_description}"
+**Risk Assessment Report:** "{risk_report}"
+
+### DECISION FRAMEWORK
+Analyze the inputs using standard insurance adjustment protocols and financial risk guidelines. Apply the following logic:
+
+1. **Processing Path:** Determine the workflow.
+   - *Automated:* Low risk, low value, clear liability.
+   - *Standard:* Moderate risk/value, standard handling required.
+   - *Complex/Litigation:* High value, injury involved, or legal complexity.
+   - *SIU (Special Investigation Unit):* High fraud risk or suspicious indicators.
+
+2. **Priority:** Determine urgency.
+   - *Low:* No immediate action needed, standard timeline.
+   - *Medium:* Standard timeline, client waiting.
+   - *High:* Significant damage, injury, or customer escalation.
+   - *Critical:* Severe injury, total loss, media exposure, or regulatory deadline.
+
+3. **Adjuster Tier:** Assign the appropriate skill level.
+   - *Tier 1 (Junior):* Simple property damage, low value (<$5k), automated processing candidate.
+   - *Tier 2 (Senior):* Moderate bodily injury, multi-vehicle, or values $5k-$25k.
+   - *Tier 3 (Specialist):* Severe injury, fatality, complex liability, fraud suspicion, or values >$25k.
+
+### OUTPUT FORMAT
+Provide your response strictly in valid JSON format. Do not include markdown formatting or additional text.
+
+{{
+    "processing_path": "Automated" | "Standard" | "Complex/Litigation" | "SIU",
+    "priority": "Low" | "Medium" | "High" | "Critical",
+    "adjuster_tier": "Tier 1" | "Tier 2" | "Tier 3",
+    "rationale": [
+        "Primary reason for routing decision...",
+        "Secondary factor observed in risk report..."
+    ]
+}}
+"""
+
+routing_template = PromptTemplate(
+    input_variables=["claim_description", "risk_report"],
+    template=route_prompt,
+)
+
+chain = routing_template | routing_model
+
 
 def routing_node(state: State) -> State:
     """
@@ -50,6 +112,18 @@ def routing_node(state: State) -> State:
             adjuster_tier = "Tier 2 (Experienced)"
             rationale.append("Low risk but less common type, standard routing")
     
+
+    # AI-Driven Routing Decision
+    ai_result = cast(AIroute, chain.invoke({
+        "claim_description": state["claim_description"],
+        "risk_report": json.dumps(risk_report)
+    }))
+
+    # Override with AI result for consistency
+    processing_path = ai_result.processing_path
+    priority = ai_result.priority
+    adjuster_tier = ai_result.adjuster_tier
+    rationale = ai_result.rationale
 
     routing_decision_report: RoutingDecision = {
         "claim_id": claim_id,

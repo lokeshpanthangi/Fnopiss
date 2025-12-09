@@ -1,7 +1,34 @@
 from state import State, RiskAssessment
-from typing import List
+from typing import List, cast
+from pydantic import BaseModel
+from config import model, PromptTemplate
 
 
+class Airisk(BaseModel):
+    risk_score: int
+    reasons : list[str]
+    category: str
+
+risk_model = model.with_structured_output(Airisk)
+
+risk_prompt = """You are a Insurance Risk analysis Expert. your task is to analyze the users Claim Information and reason
+through it and provide a risk score from 1 to 10, with 1 being the lowest risk and 10 being the highest risk.
+and the Category of risk as Low, Medium or High. and also The reasosns for the given score based on the rules of Insurance.
+here is the Clamin description : {claim_description} ,  
+and response only in JSON format:
+{{
+    "risk_score": int,
+    "category": str,
+    "reasons": [str]
+}}
+"""
+
+risk_template = PromptTemplate(
+    input_variables=["claim_description"],
+    template=risk_prompt,
+)
+
+chain = risk_template | risk_model
 
 def risk_assessment_agent(state: State) -> State:
     """
@@ -19,7 +46,6 @@ def risk_assessment_agent(state: State) -> State:
     tenure_days = state["customer_tenure_days"]
     injuries = state["injuries_reported"]
     other_party = state["other_party_involved"]
-
 
     # --- Apply Rules (Score Calculation) ---
     
@@ -52,12 +78,12 @@ def risk_assessment_agent(state: State) -> State:
     # 2. Cap Score and Categorize
     final_score = max(1, min(score, 10))
 
-    if final_score <= 3:
-        category = "Low"
-    elif final_score <= 6:
-        category = "Medium"
-    else:
-        category = "High"
+    ai_result = cast(Airisk, chain.invoke({"claim_description": state["claim_description"]}))
+
+    # Override with AI result for consistency (access Pydantic model attributes)
+    final_score = (final_score + ai_result.risk_score) // 2
+    category = ai_result.category
+    reasons = ai_result.reasons
 
     risk_assessment_report: RiskAssessment = {
         "claim_id": claim_id,

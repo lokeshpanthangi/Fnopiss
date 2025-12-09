@@ -52,4 +52,5 @@ chain = prompt | claim_model
 def extract_claim_info(state : State):
     response = chain.invoke({"claim_description": state["claim_description"]})
     state.update(response)
+    state["claim_Extracted"] = True
     return state

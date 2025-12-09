@@ -35,7 +35,11 @@ class State(TypedDict):
     other_party_involved: bool  
     timestamp_submitted: str
     customer_tenure_days: int  
-    previous_claims_count: int  
+    previous_claims_count: int
+
+    claim_Extracted : Optional[bool]
+    risK_extracted: Optional[bool]
+    route_extracted: Optional[bool] 
     
     risk_assessment_report: Optional[RiskAssessment]
 

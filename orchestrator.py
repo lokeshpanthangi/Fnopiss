@@ -24,21 +24,16 @@ graph.add_node("Orchestrator", mock_node)
 
 
 def orchestrator(state: State):
-    # 1. Check if Intake is needed
-    # Use .get() to avoid KeyErrors if the field doesn't exist yet
+
     if not state.get("claim_Extracted"):
         return "Intake Node"
     
-    # 2. Check if Risk Assessment is missing
-    # This 'not' check handles None AND empty lists
     if not state.get("risk_assessment_report"):
         return "Risk Analyze Node"
 
-    # 3. Check if Routing is missing
     if not state.get("routing_decision_report"):
         return "Routing Node"
 
-    # 4. If we have everything, End
     return END
 
 

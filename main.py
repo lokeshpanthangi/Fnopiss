@@ -6,9 +6,20 @@ from fastapi import FastAPI, HTTPException
 from state import State
 from langchain_core.runnables import RunnableConfig
 import uuid
+import json
+from fastapi.responses import StreamingResponse
+from fastapi.middleware.cors import CORSMiddleware  
 
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins (for development)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.post("/extract-claim/")
@@ -42,3 +53,23 @@ async def process_claim(state : State):
         return final_state
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+
+@app.post("/process-claim-stream/")
+async def process_claim_stream(state: State):
+    thread_id = str(uuid.uuid4())
+    config = RunnableConfig(configurable={"thread_id": thread_id})
+    
+    state["claim_Extracted"] = False
+    state["risk_assessment_report"] = None
+    state["routing_decision_report"] = None
+
+    async def event_generator():
+        async for event in graph_app.astream(state, config=config):
+            for node_name, node_output in event.items():
+                yield json.dumps({
+                    "node": node_name,
+                    "data": node_output
+                }) + "\n"
+
+    return StreamingResponse(event_generator(), media_type="application/x-ndjson")

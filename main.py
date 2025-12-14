@@ -1,14 +1,20 @@
 from nodes.intake_node import extract_claim_info
 from nodes.risk_analyze_node import risk_assessment_agent
 from nodes.routing_node import routing_node
+from chat_ai import chat_agent
 from orchestrator import app as graph_app
 from fastapi import FastAPI, HTTPException
 from state import State
 from langchain_core.runnables import RunnableConfig
-import uuid
-import json
+import uuid, json
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware  
+from pydantic import BaseModel
+
+class ChatRequest(BaseModel):
+    claim_data: str
+    question: str
+
 
 
 app = FastAPI()
@@ -26,6 +32,7 @@ app.add_middleware(
 async def extract_claim(state : State) -> State:
     response = extract_claim_info(state)
     return response
+
 
 @app.post("/assess-risk/")
 async def assess_risk(state : State) -> State:
@@ -64,12 +71,31 @@ async def process_claim_stream(state: State):
     state["risk_assessment_report"] = None
     state["routing_decision_report"] = None
 
-    async def event_generator():
-        async for event in graph_app.astream(state, config=config):
-            for node_name, node_output in event.items():
-                yield json.dumps({
-                    "node": node_name,
-                    "data": node_output
-                }) + "\n"
+    try:
+        async def event_generator():
+            async for event in graph_app.astream(state, config=config):
+                for node_name, node_output in event.items():
+                    yield json.dumps({
+                        "node": node_name,
+                        "data": node_output
+                    }) + "\n"
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
     return StreamingResponse(event_generator(), media_type="application/x-ndjson")
+
+
+@app.post("/chat/")
+async def chat_endpoint(request: ChatRequest):
+    response = await chat_agent(request.claim_data, request.question)
+    return {"response": response}
+
+@app.post("/chat-stream/")
+async def chat_stream_endpoint(request: ChatRequest):
+    from chat_ai import chat_agent_stream
+    
+    async def event_generator():
+        async for chunk in chat_agent_stream(request.claim_data, request.question):
+            yield chunk
+    
+    return StreamingResponse(event_generator(), media_type="text/event-stream")
